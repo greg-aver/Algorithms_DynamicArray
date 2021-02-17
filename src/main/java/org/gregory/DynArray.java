@@ -78,17 +78,12 @@ public class DynArray<T> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-/*        if (o == null || !getClass().equals(o.getClass())) return false;
-        Class<? extends DynArray> classThis = getClass();
-        String strThis = getClass().getName();
-        Class<? extends DynArray> classThat = getClass();
-        String strThat = getClass().getName();*/
-
         DynArray<?> that = (DynArray<?>) o;
 
         if (count != that.count
                 || capacity != that.capacity
-                || !Arrays.equals(array, that.array)) {
+                || !Arrays.equals(array, that.array)
+                || getClazz() != getClazz()) {
             return false;
         }
 
@@ -129,6 +124,10 @@ public class DynArray<T> {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+    
+    public Class getClazz() {
+        return clazz;
     }
 
 }
