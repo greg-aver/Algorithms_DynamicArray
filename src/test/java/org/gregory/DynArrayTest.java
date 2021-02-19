@@ -198,7 +198,7 @@ class DynArrayTest {
         arrayDouble.remove(16);
 
         assertThat(arrayDouble.getCount(), is(16));
-        assertThat(arrayDouble.getCapacity(), is(21));
+        assertThat(arrayDouble.getCapacity(), is(32));
 
         arrayDouble.remove(15);
 
@@ -262,9 +262,11 @@ class DynArrayTest {
         assertThat(arrayString.getCount(), is(17));
 
         arrayString.remove(0);
-        assertThat(arrayString.getCapacity(), is(21));
+        assertThat(arrayString.getCapacity(), is(32));
         assertThat(arrayString.getCount(), is(16));
         assertThat(arrayString.getItem(4), is("ПЯТЬ"));
+        arrayString.remove(0);
+        assertThat(arrayString.getCapacity(), is(21));
     }
 
     @Test
@@ -334,7 +336,7 @@ class DynArrayTest {
         arrayDouble.remove(16);
 
         assertThat(arrayDouble.getCount(), is(16));
-        assertThat(arrayDouble.getCapacity(), is(21));
+        assertThat(arrayDouble.getCapacity(), is(32));
 
         arrayDouble.remove(15);
 
