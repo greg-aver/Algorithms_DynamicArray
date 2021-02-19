@@ -376,6 +376,36 @@ class DynArrayTest {
         assertThat(dynArrayActual.getCount(), is(4));
         assertThat(dynArrayActual.getCapacity(), is(16));
     }
+    
+    @Test
+    public void removeMinArray() {
+        DynArray dynArrayActual = new DynArray<Integer>(Integer.class);
+        for (int i = 0; i < 20; i++) {
+            dynArrayActual.appendArr(i);
+            assertThat(dynArrayActual.getCount(), is(i + 1));
+            if (dynArrayActual.getCount() > 16) {
+                assertThat(dynArrayActual.getCapacity(), is(32));
+            } else {
+                assertThat(dynArrayActual.getCapacity(), is(16));
+            }
+        }
+
+        int j = 19;
+        while (j >= 0) {
+            dynArrayActual.remove(j);
+            j--;
+            if (dynArrayActual.getCount() > 15) {
+                assertThat(dynArrayActual.getCapacity(), is(32));
+            } else {
+                if (dynArrayActual.getCount() > 10) {
+                    assertThat(dynArrayActual.getCapacity(), is(21));
+                } else {
+                    assertThat(dynArrayActual.getCapacity(), is(16));
+                }
+            }
+        }
+        assertThat(dynArrayActual, is(arrayIntEmpty));
+    }
 
     /*
     Вставка / удаление:
