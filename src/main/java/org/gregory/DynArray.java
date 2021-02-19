@@ -68,11 +68,10 @@ public class DynArray<T> {
         array[getCount()] = null;
 
         int newCapacity = (int) (getCapacity() / 1.5);
-        if (newCapacity >= getCount()
+        if (getCount() * 2 < getCapacity()
                 && newCapacity >= 16) {
             makeArray(newCapacity);
         }
-
     }
 
     @Override
@@ -125,9 +124,8 @@ public class DynArray<T> {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-    
+
     public Class getClazz() {
         return clazz;
     }
-
 }
